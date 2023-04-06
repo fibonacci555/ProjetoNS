@@ -36,7 +36,34 @@
 		</header>
 		<style>*{
             overflow-x: hidden;
-        }</style>
+        }
+		
+		/* Para tablets */
+@media only screen and (min-width: 900px) and (max-width: 1450px) {
+    /* estilos para tablets */
+}
+
+/* Para desktops */
+@media only screen and (max-width: 1450px) {
+	*{
+		overflow-y: auto;
+	}
+    .inicio{
+		display: none;
+	}
+	svg {
+    position: flex;
+    top: 0;
+	margin-left: -140%;
+    left: 0;
+    width: 350%;
+    height: 350%;
+	max-height: 1125px;
+}
+}
+		
+		
+		</style>
    
         
         <!--aside bar-->
@@ -116,9 +143,10 @@
 				
 			</ul>
 		</div>
-	</nav>
-	<div>{% endif %} <h1 style="color:rgb(0, 0, 0); padding-left: 13%;padding-top: 15%; position: absolute;"><img src="{% static 'blog/lifesaver.png'%}" alt=""><br>És Nadador Salvador?<br>Queres estar na hora certa<br>e no local certo?
-	<a href="{% url 'login'%}" style="text-decoration: underline;"><br>Inscreve-te</a> para não <br>perderes oportunidades!</h1></div>
+	</nav>{% endif %}
+	<div class="inicio"> <h1 style="color:rgb(0, 0, 0); padding-left: 13%;padding-top: 15%; position: absolute;"><img src="{% static 'blog/lifesaver.png'%}" alt=""><br>És Nadador Salvador?<br>Queres estar na hora certa<br>e no local certo?
+	<a href="{% url 'login'%}" style="text-decoration: underline;"><br>Inscreve-te</a> para não <br>perderes oportunidades!<br><br>Escolhe o distrito no mapa!<div id="display" style="margin-top: 5%;text-decoration: underline;"></div></h1></div>
+	
 			
 			
 <?xml version="1.0" encoding="utf-8"?>
@@ -8918,6 +8946,19 @@
 	</g>
 </g>
 </svg>
+<script>
+	const links = document.querySelectorAll('a');
 
+// Seleciona o elemento <div> onde o ID será exibido
+const displayDiv = document.querySelector('#display');
+
+// Adiciona um event listener para cada link
+links.forEach(link => {
+    link.addEventListener('mouseover', () => {
+        // Quando o mouse passar sobre o link, exibe o ID do link na div
+        displayDiv.textContent = link.id;
+    });
+});
+</script>
 </body>
 </html>

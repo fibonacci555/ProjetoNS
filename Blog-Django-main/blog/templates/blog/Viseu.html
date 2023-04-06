@@ -33,6 +33,17 @@
    
         
         <!--aside bar-->
+        {% if user.is_authenticated %}
+			
+			
+			
+		</header>
+		<style>*{
+            overflow-x: hidden;
+        }</style>
+   
+        
+        <!--aside bar-->
         <nav class="navbar">            
             <div class="navbar-container">
                 <!--logo div-->
@@ -70,10 +81,53 @@
                 </ul>
             </div>
         </nav>
+		{% else %}
+	</header>
+	<style>*{
+		overflow-x: hidden;
+	}</style>
+
+	
+	<!--aside bar-->
+	<nav class="navbar">            
+		<div class="navbar-container">
+			<!--logo div-->
+			<div class="navbar-logo-div">
+				<a class="navbar-logo-link" href="{% url 'blog-home'%}">
+				   <h3>Nadadores Salvadores</h3>
+				</a>
+				<button class="navbar-toggler"><i class='fas fa-solid fa-bars'></i></button>
+			</div>
+
+			
+
+			<!--item list-->
+			<ul class="menu-list">   
+				<li class="menu-item">                        
+					<a class="menu-link" href="{% url 'blog-home'%}"> 
+						<i class="fas fa-solid fa-map"></i>
+						<span class="menu-link-text">Mapa</span>                            
+					</a>
+				</li>
+				
+				<li class="menu-item">                        
+					<a class="menu-link" class="menu-link" href="{% url 'profile'%}">
+						<i class="fas fa-solid fa-user"></i>
+						<span class="menu-link-text">Perfil</span>    
+					</a>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</nav>{% endif %}
         <div style="text-align: center;">
             
             
             <style>
+                *{
+                                overflow-y: auto;
+                            }
                 /* CSS */
                     .profile-card {
                     width: 600px;
@@ -201,10 +255,70 @@
                             padding: .75rem 1.5rem;
                         }
                         }
+
+                        @media only screen and (max-width: 900px) {
+                            
+
+                            .texto-nao{
+                                padding: 20%;
+                                margin-left: 5%;
+                            }
+
+
+                            .profile-card {
+                                margin-bottom: 5%;
+                                margin-right: 0%;
+                                width: 250px;
+                                font-size: 10px;
+                                padding: 7px;
+                                line-height: 1.5;
+                                text-align: right;
+                            }
+
+                            ul{
+                                margin-left: 10%;
+                            }
+
+                            .profile-info {
+                                text-align: center;
+                                }
+
+                            .img-card, .modal-button{
+                                transform: translate(0.75);
+                            }
+
+                            .modal-button {
+                                /* estilos para dispositivos móveis */
+                                font-size: 0.9rem;
+                                padding: 0.5rem 0.8rem;
+                            }
+
+                            .modal-content {
+                                background-color: #fefefe;
+                                margin: auto;
+                                padding: 20px;
+                                border: 3px solid black;
+                                width: 100%;
+                                max-width: 200px;
+                            }
+
+                        }    
+                        /* Para tablets */
+                        @media only screen and (min-width: 900px) and (max-width: 1450px) {
+                            form {
+                                height: 200px;
+                                width: 300px;
+                                background-color: rgba(255, 255, 255, 0.13);
+                                position: absolute;
+                                transform: translate(-50%, -50%);
+                                top: 50%;
+                                left: 50%;
+                            }
+                        }
             </style>
             <div>{% if profile_list|length == 0 %}
                 <h1 style="padding-top: 1%;padding-bottom: 3%;">{{ dist }}</h1>
-                <h3 style="padding-top: 10%;">Não existem resultados para este distrito.</h3>
+                <h3 style="padding-top: 10%;" class="texto-nao">Não existem resultados para este distrito.</h3>
                 {% else %}
                 <h1 style="padding-top: 1%;padding-bottom: 3%;">{{ dist }}</h1>
                 <h3 style="padding-bottom: 1%;">Resultados: {{profile_list|length}}</h3>
@@ -212,7 +326,7 @@
                     {% for p in profile_list %}
                         <li style="margin-bottom: 2%;">
                             <div class="profile-card">
-                                <img src="{% static 'blog/lifesaver.png'%}" alt="" >
+                                <img src="{% static 'blog/lifesaver.png'%}" alt="" class="img-card" >
                                 <div class="profile-info">
                                     <h3><i class="fa-regular fa-user" style="color: #000000;"></i> {{p.pnome}} {{p.snome}}</h3>
                                     <h3><i class="fa-solid fa-location-dot" style="color: #000000;"></i> {{p.cidade}}</h3>

@@ -1,21 +1,254 @@
-{% extends "blog/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sidebar</title>
+
+        <!--fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+        <!--css -->
+        <link rel="stylesheet" href="{% static 'blog/nav.css'%}">
+
+        <!--js -->
+        <script src="{% static 'blog/nav.js'%}" defer></script>
+    
+    <!--fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" >
+  </head>
+    <body>
+        <style>
+        *{
+            overflow-x: hidden;
+        }
+
+        body {
+            background-image: url('/static/blog/bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        form {
+                height: 750px;
+                width: 400px;
+                background-color: rgba(255, 255, 255, 0.13);
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+                border-radius: 10px;
+                backdrop-filter: blur(30px);
+                -webkit-backdrop-filter: blur(30px);
+                border: 2px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+                padding: 50px 35px;
+                }
+                form * {
+                
+                color: #000000;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+                }
+
+                @media (prefers-color-scheme: dark) {
+                form * {
+                    color: #000000;
+                }
+                }
+
+                form h3 {
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 50px;
+                text-align: center;
+                }
+
+                label {
+                display: block;
+                margin-top: 30px;
+                font-size: 16px;
+                font-weight: 500;
+                }
+                input {
+                display: block;
+                height: 50px;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.07);
+                border-radius: 3px;
+                padding: 0 10px;
+                margin-top: 8px;
+                font-size: 14px;
+                font-weight: 300;
+                }
+
+                .input:hover,.input:focus{
+                    background-color: rgba(233, 227, 227, 0.70);
+                    outline: 2px solid black;
+                }
+
+                ::placeholder {
+                color: #1b1b1b;
+                }
+
+                @media (prefers-color-scheme: dark) {
+                ::placeholder {
+                    color: #e5e5e5;
+                }
+                }
+
+                .login-button {
+                margin-top: 50px;
+                width: 100%;
+                background-color: #08dd36;
+                color: #000000;
+                padding: 15px 0;
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 5px;
+                cursor: pointer;
+                }
+
+                .login-button:hover{
+                    background-color: #0688df;
+                }
+
+
+                /* Para dispositivos móveis */
+                @media only screen and (max-width: 600px) {
+                    form {
+                        height: 750px;
+                        width: 300px;
+                        background-color: rgba(255, 255, 255, 0.13);
+                        position: absolute;
+                        transform: translate(-50%, -50%);
+                        top: 50%;
+                        left: 55%;
+                    }
+                }
+
+                /* Para tablets */
+                @media only screen and (min-width: 600px) and (max-width: 1450px) {
+                    form {
+                        height: 750px;
+                        width: 400px;
+                        background-color: rgba(255, 255, 255, 0.13);
+                        position: absolute;
+                        transform: translate(-50%, -50%);
+                        top: 50%;
+                        left: 50%;
+                    }
+                }
+
+        </style>
+   
+        
+        <!--aside bar-->
+        {% if user.is_authenticated %}
+        <!--aside bar-->
+        <nav class="navbar">            
+            <div class="navbar-container">
+                <!--logo div-->
+                <div class="navbar-logo-div">
+                    <a class="navbar-logo-link" href="{% url 'blog-home'%}">
+                       <h3>Nadadores Salvadores</h3>
+                    </a>
+                    <button class="navbar-toggler"><i class='fas fa-solid fa-bars'></i></button>
+                </div>
+
+                
+
+                <!--item list-->
+                <ul class="menu-list">   
+                    <li class="menu-item">                        
+                        <a class="menu-link" href="{% url 'blog-home'%}"> 
+                            <i class="fas fa-solid fa-map"></i>
+                            <span class="menu-link-text">Mapa</span>                            
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">                        
+                        <a class="menu-link" class="menu-link" href="{% url 'profile'%}">
+                            <i class="fas fa-solid fa-user"></i>
+                            <span class="menu-link-text">Perfil</span>    
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">                        
+                        <a class="menu-link" href="{% url 'logout'%}">
+                            <i class="fas fa-sharp fa-regular fa-arrow-right-from-bracket"></i>
+                            <span class="menu-link-text">Sair</span>    
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
-            </small>
-        </div>
-    </div>
-{% endblock content %}
+        </nav>
+		{% else %}
+	</header>
+	<style>*{
+		overflow-x: hidden;
+	}</style>
+
+	
+	<!--aside bar-->
+	<nav class="navbar">            
+		<div class="navbar-container">
+			<!--logo div-->
+			<div class="navbar-logo-div">
+				<a class="navbar-logo-link" href="{% url 'blog-home'%}">
+				   <h3>Nadadores Salvadores</h3>
+				</a>
+				<button class="navbar-toggler"><i class='fas fa-solid fa-bars'></i></button>
+			</div>
+
+			
+
+			<!--item list-->
+			<ul class="menu-list">   
+				<li class="menu-item">                        
+					<a class="menu-link" href="{% url 'blog-home'%}"> 
+						<i class="fas fa-solid fa-map"></i>
+						<span class="menu-link-text">Mapa</span>                            
+					</a>
+				</li>
+				
+				<li class="menu-item">                        
+					<a class="menu-link" class="menu-link" href="{% url 'profile'%}">
+						<i class="fas fa-solid fa-user"></i>
+						<span class="menu-link-text">Perfil</span>    
+					</a>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</nav>{% endif %}
+
+
+<form method="POST">
+    {% csrf_token %}
+    <h3>Sign Up</h3>
+  
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Username">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Email">
+  
+    <label for="password1">Password</label>
+    <input type="password" id="password1" name="password1" placeholder="Password">
+
+    <label for="password2">Confirm Password</label>
+    <input type="password2" id="password2" name="password2" placeholder="Confirm Password">
+  
+    <button class="login-button" type="submit">Criar Conta</button><br>
+    <small class="text-muted">
+        Já tens conta? <a class="ml-2" href="{% url 'login' %}" style="text-decoration: underline;">Login</a>
+    </small>
+  </form>

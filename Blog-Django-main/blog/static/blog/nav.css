@@ -12,6 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-y: hidden;
 }
 
 
@@ -52,7 +53,7 @@ body {
 .navbar {
   z-index: 2;
   width: 80px;
-  max-width: 4rem;
+  max-width: 3.5rem;
   background-color: var(--green);
   height: 100vh; 
   position: fixed;
@@ -93,20 +94,6 @@ font-size: 1rem;
 }
 
 /*search*/
-.navbar .navbar-search {
-  width: 100%;
-  background-image: url('../img/search.svg');
-  background-repeat: no-repeat;
-  background-color: var(--light-green);
-  background-position: center;
-  
-  margin: 0 auto; 
-  /* background-position: 1rem 0.7rem; */
-  padding: 1rem;
-  /* padding-left: 3rem; */
-  border-radius: 10px; 
-  margin-bottom: 1.2rem; 
-}
 
 #icon-search {
 position: absolute; 
@@ -126,6 +113,7 @@ left: 1.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 0;
   gap: 1.5rem;
   width: 100%;
 }
@@ -262,7 +250,7 @@ left: 1.6rem;
 /*media queries*/
 @media only screen and (max-width: 870px) {
   .navbar.active {
-      max-width: 27%; 
+      max-width: 20%; 
   }
 
   .navbar.active + .dashboard { 
@@ -288,7 +276,7 @@ left: 1.6rem;
 
   .navbar .menu-item {
       position: relative;
-      top: 4rem;
+      
   }
 }
 
