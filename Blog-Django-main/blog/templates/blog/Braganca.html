@@ -1,0 +1,281 @@
+
+{% load static %}
+
+
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sidebar</title>
+
+        <!--fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+        <!--css -->
+        <link rel="stylesheet" href="{% static 'blog/nav.css'%}">
+
+        <!--js -->
+        <script src="{% static 'blog/nav.js'%}" defer></script>
+    
+    <!--fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" >
+  </head>
+    <body>
+        <style>*{
+            overflow-x: hidden;
+        }</style>
+   
+        
+        <!--aside bar-->
+        <nav class="navbar">            
+            <div class="navbar-container">
+                <!--logo div-->
+                <div class="navbar-logo-div">
+                    <a class="navbar-logo-link" href="{% url 'blog-home'%}">
+                       <h3>Nadadores Salvadores</h3>
+                    </a>
+                    <button class="navbar-toggler"><i class='fas fa-solid fa-bars'></i></button>
+                </div>
+
+                
+
+                <!--item list-->
+                <ul class="menu-list">   
+                    <li class="menu-item">                        
+                        <a class="menu-link" href="{% url 'blog-home'%}"> 
+                            <i class="fas fa-solid fa-map"></i>
+                            <span class="menu-link-text">Mapa</span>                            
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">                        
+                        <a class="menu-link" class="menu-link" href="{% url 'profile'%}">
+                            <i class="fas fa-solid fa-user"></i>
+                            <span class="menu-link-text">Perfil</span>    
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">                        
+                        <a class="menu-link" href="{% url 'logout'%}">
+                            <i class="fas fa-sharp fa-regular fa-arrow-right-from-bracket"></i>
+                            <span class="menu-link-text">Sair</span>    
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div style="text-align: center;">
+            
+            
+            <style>
+                /* CSS */
+                    .profile-card {
+                    width: 600px;
+                    height: 150px;
+                    font-size: 20px;
+                    padding: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: left;
+                    background-color: rgb(255, 255, 255);
+                    margin-bottom: 1%;
+                    padding: 30px;
+                    max-width: 600px;
+                    border-radius: 25px;
+                    
+                    box-shadow: 0px 6px 0#000000;
+                    justify-content: space-between;
+
+                        
+                    
+                    }
+
+                    .profile-icon {
+                    font-size: 50px;
+                    margin-right: 20px;
+                    }
+
+                    .profile-info {
+                    text-align: left;
+                    }
+                    ul {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    }
+                    .modal-button {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    margin-right: 0;
+                    }
+                    .modal-button {
+                        background-color: #4CAF50;
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        }
+
+                        /* Modal */
+                        .modal {
+                        display: none;
+                        position: fixed;
+                        z-index: 1;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        overflow: auto;
+                        background-color: rgba(0, 0, 0, 0.4);
+                    }
+
+                    .modal-content {
+                        background-color: #fefefe;
+                        margin: auto;
+                        padding: 30px;
+                        border: 3px solid black;
+                        width: 100%;
+                        max-width: 400px;
+                    }
+
+                        .close-button {
+                            color:#aaa;
+                            float:right;
+                            font-size:28px;
+                            font-weight:bold;
+                        }
+
+                        .close-button:hover,
+                        .close-button:focus {
+                            color:black;
+                            text-decoration:none;
+                            cursor:pointer;
+                        }
+
+
+                        /* CSS */
+                        .modal-button {
+                        background-color: #111827;
+                        border: 1px solid transparent;
+                        border-radius: .75rem;
+                        box-sizing: border-box;
+                        color: #FFFFFF;
+                        cursor: pointer;
+                        flex: 0 0 auto;
+                        font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+                        font-size: 1.125rem;
+                        font-weight: 600;
+                        line-height: 1.5rem;
+                        padding: .75rem 1.2rem;
+                        text-align: center;
+                        text-decoration: none #6B7280 solid;
+                        text-decoration-thickness: auto;
+                        transition-duration: .2s;
+                        transition-property: background-color,border-color,color,fill,stroke;
+                        transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+                        user-select: none;
+                        -webkit-user-select: none;
+                        touch-action: manipulation;
+                        width: auto;
+                        }
+
+                        .modal-button:hover {
+                        background-color: #374151;
+                        }
+
+                        .modal-button:focus {
+                        box-shadow: none;
+                        outline: 2px solid transparent;
+                        outline-offset: 2px;
+                        }
+
+                        @media (min-width: 768px) {
+                        .modal-button {
+                            padding: .75rem 1.5rem;
+                        }
+                        }
+            </style>
+            <div>{% if profile_list|length == 0 %}
+                <h1 style="padding-top: 1%;padding-bottom: 3%;">{{ dist }}</h1>
+                <h3 style="padding-top: 10%;">Não existem resultados para este distrito.</h3>
+                {% else %}
+                <h1 style="padding-top: 1%;padding-bottom: 3%;">{{ dist }}</h1>
+                <h3 style="padding-bottom: 1%;">Resultados: {{profile_list|length}}</h3>
+                <ul style="text-align: left;">
+                    {% for p in profile_list %}
+                        <li style="margin-bottom: 2%;">
+                            <div class="profile-card">
+                                <img src="{% static 'blog/lifesaver.png'%}" alt="" >
+                                <div class="profile-info">
+                                    <h3><i class="fa-regular fa-user" style="color: #000000;"></i> {{p.pnome}} {{p.snome}}</h3>
+                                    <h3><i class="fa-solid fa-location-dot" style="color: #000000;"></i> {{p.cidade}}</h3>
+                                </div>
+                                <button class="modal-button" data-target="#modal-{{forloop.counter}}">Mais Info</button>
+                            </div>
+                        </li>
+                        <!-- Modal -->
+                        <div id="modal-{{forloop.counter}}" class="modal" >
+                            <div class="modal-content">
+                                <span class="close-button">&times;</span>
+                                {% if user.is_authenticated %}
+                                <p>Telemóvel: {{ p.phone }}</p>
+                                <p>NSID: {{ p.NSID }}</p>
+
+                                {% else%}
+                                    <h2>Efetue <a href="{% url 'login'%}" style="text-decoration: underline;">login</a> ou <a href="{% url 'register'%}" style="text-decoration: underline;">crie uma conta</a></h2>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+                
+                {% endif %}
+            </div>
+
+            
+            
+
+            <script>
+                const modalButtons = document.querySelectorAll(".modal-button");
+                const closeButtons = document.querySelectorAll(".close-button");
+            
+                modalButtons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        const target = button.getAttribute("data-target");
+                        const modal = document.querySelector(target);
+                        modal.style.display = "block";
+                    });
+                });
+            
+                closeButtons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        const modal = button.closest(".modal");
+                        modal.style.display = "none";
+                    });
+                });
+            
+                window.addEventListener("click", (event) => {
+                    if (event.target.classList.contains("modal")) {
+                        event.target.style.display = "none";
+                    }
+                });
+            </script>
+
+    
+
+   
+        </div>
+     </body>
+     </html>
+
+
+
+
+

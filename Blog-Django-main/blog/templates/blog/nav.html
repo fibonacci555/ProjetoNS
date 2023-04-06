@@ -1,0 +1,68 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sidebar</title>
+
+        <!--fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+        <!--css -->
+        <link rel="stylesheet" href="{% static 'blog/nav.css'%}">
+
+        <!--js -->
+        <script src="{% static 'blog/nav.js'%}" defer></script>
+    
+    <!--fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" >
+  </head>
+    <body>
+        
+   
+        
+        <!--aside bar-->
+        <nav class="navbar">            
+            <div class="navbar-container">
+                <!--logo div-->
+                <div class="navbar-logo-div">
+                    <a class="navbar-logo-link" href="{% url 'blog-home'%}">
+                       <h3>Nadadores Salvadores</h3>
+                    </a>
+                    <button class="navbar-toggler"><i class='fas fa-solid fa-bars'></i></button>
+                </div>
+
+                
+
+                <!--item list-->
+                <ul class="menu-list">   
+                    <li class="menu-item">                        
+                        <a class="menu-link" href="{% url 'blog-home'%}"> 
+                            <i class="fas fa-solid fa-map"></i>
+                            <span class="menu-link-text">Mapa</span>                            
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">                        
+                        <a class="menu-link" class="menu-link" href="{% url 'profile'%}">
+                            <i class="fas fa-solid fa-user"></i>
+                            <span class="menu-link-text">Perfil</span>    
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">                        
+                        <a class="menu-link" href="{% url 'logout'%}">
+                            <i class="fas fa-sharp fa-regular fa-arrow-right-from-bracket"></i>
+                            <span class="menu-link-text">Sair</span>    
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            
+     </body>
+     </html>
